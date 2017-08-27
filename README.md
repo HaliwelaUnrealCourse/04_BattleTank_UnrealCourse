@@ -1,2 +1,2 @@
-# 04_Battle_Tank_Unreal_Course
+# BattleTank_UnrealCourse
 An open-world tanks battle in Unreal 4
