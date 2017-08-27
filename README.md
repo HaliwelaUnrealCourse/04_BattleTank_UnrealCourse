@@ -3,3 +3,4 @@ An open-world tanks battle in Unreal 4
 
 ## Course List
 - BT02 Game Design Document (GDD)
+- BT03 Creating GitHub Repo
