@@ -3,6 +3,7 @@
 #include "TankPlayerController.h"
 
 
+// Called when the game starts
 void ATankPlayerController::BeginPlay()
 {
 	Super::BeginPlay();
@@ -16,6 +17,17 @@ void ATankPlayerController::BeginPlay()
 	{
 		UE_LOG(LogTemp, Warning, TEXT("PlayerController controlling: %s"), *(ControlledTank->GetName()));
 	}
+}
+
+// Called every frame
+void ATankPlayerController::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+
+	UE_LOG(LogTemp, Warning, TEXT("Player controller is tick"))
+
+	// AimTowardsCrosshair();
+
 }
 
 ATank* ATankPlayerController::GetControlledTank() const
