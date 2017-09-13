@@ -2,7 +2,6 @@
 
 #include "TankAimingComponent.h"
 #include "GameFramework/Actor.h"
-#include "Classes/Components/StaticMeshComponent.h" // add the Classes/...if "pointer to incomplete class type is not allowed" occur
 #include "Kismet/GameplayStatics.h"
 #include "TankBarrel.h"
 
