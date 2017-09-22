@@ -10,6 +10,7 @@
 class UTankBarrel;
 class UTankTurret;
 class UTankAimingComponent;
+class UTankMovementComponent;
 class AProjectile;
 
 UCLASS()
@@ -22,6 +23,9 @@ protected:
 	virtual void BeginPlay() override;
 
 	UTankAimingComponent* TankAimingComponent = nullptr;
+
+	UPROPERTY(BlueprintReadOnly) // This make the inherited Movement Component can be available and be called in BP
+	UTankMovementComponent* TankMovementComponent = nullptr;
 
 public:
 	UFUNCTION(BlueprintCallable, Category = Setup)
