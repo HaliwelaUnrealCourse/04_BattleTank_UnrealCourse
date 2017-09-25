@@ -24,7 +24,7 @@ protected:
 
 	UTankAimingComponent* TankAimingComponent = nullptr;
 
-	UPROPERTY(BlueprintReadOnly) // This make the inherited Movement Component can be available and be called in BP
+	UPROPERTY(BlueprintReadOnly) // This make the inherited Movement Component can be available and its function be called in BP if declared as UFUNCTION
 	UTankMovementComponent* TankMovementComponent = nullptr;
 
 public:
