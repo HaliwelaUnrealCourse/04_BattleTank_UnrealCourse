@@ -24,8 +24,6 @@ public:
 
 	void SetTurretReference(UTankTurret* TurretToSet); // Set a turret reference
 
-public:	
-
 	void AimAt(FVector HitLocation, float LaunchSpeed);
 	
 private:

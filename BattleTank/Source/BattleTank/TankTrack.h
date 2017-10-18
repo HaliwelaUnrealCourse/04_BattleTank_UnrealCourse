@@ -4,10 +4,11 @@
 
 #include "CoreMinimal.h"
 #include "Components/StaticMeshComponent.h"
+#include "Curves/CurveFloat.h"
 #include "TankTrack.generated.h"
 
 /**
- * TankTrack is used to set maximum driving force, and to apply forces to the tank.
+ * 
  */
 UCLASS(meta = (BlueprintSpawnableComponent))
 class BATTLETANK_API UTankTrack : public UStaticMeshComponent
@@ -15,11 +16,19 @@ class BATTLETANK_API UTankTrack : public UStaticMeshComponent
 	GENERATED_BODY()
 	
 public:
-	// Sets a throttle between -1 and +1
+	// Set throttle input from the user
 	UFUNCTION(BlueprintCallable, Category = Input)
 	void SetThrottle(float Throttle);
-	
-	// Max force per tracks, in Newtons
-	UPROPERTY(EditDefaultsOnly)
-	float TrackMaxDrivingForce = 400000; // Assume 40 ton tank, and 1g acceleration
+
+	// Engine torque curve
+	UPROPERTY(EditDefaultsOnly, Category = EngineCurve)
+	UCurveFloat* EngineTorqueCurve;
+
+private:
+	// The input the player set
+	UPROPERTY(Transient)
+	float RawThrottleInput;
+
+	UPROPERTY()
+	float EngineThrottle = 100000.0f;
 };

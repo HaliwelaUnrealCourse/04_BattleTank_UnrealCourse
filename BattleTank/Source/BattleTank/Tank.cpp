@@ -14,6 +14,8 @@ ATank::ATank()
 {
  	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = false;
+	// Make sure it ticks before physics update
+	PrimaryActorTick.TickGroup = TG_PrePhysics;
 
 	// Make Aiming Component and Movement Component inherited from the tank in BP
 	// No need to protect points as added as construction

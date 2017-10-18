@@ -5,9 +5,13 @@
 
 void UTankTrack::SetThrottle(float Throttle)
 {
-	auto ForceApplied = GetForwardVector() * Throttle * TrackMaxDrivingForce;
-	auto ForceLocation = GetComponentLocation();
-	auto TankRoot = Cast<UPrimitiveComponent>(GetOwner()->GetRootComponent());
-	TankRoot->AddForceAtLocation(ForceApplied, ForceLocation);
-}
+	// Calculate the throttle input, engine throttle and engine torque curve to get the engine torque.
+	RawThrottleInput = FMath::Clamp<float>(Throttle, 0.0f, 1.0f);
+	auto EngineTorque = EngineTorqueCurve->GetFloatValue(0.0f) * EngineThrottle * RawThrottleInput;
 
+	// Applying the engine torque to the sprocket
+	auto TorqueApplied = GetForwardVector() * EngineTorque * 0.5f;
+	auto TorqueLocation = GetComponentLocation();
+	auto TankRoot = Cast<UPrimitiveComponent>(GetOwner()->GetRootComponent());
+	TankRoot->AddForceAtLocation(TorqueApplied, TorqueLocation);
+}
